@@ -1,0 +1,51 @@
+[tool.poetry]
+name = "pytest-data-suites"
+version = "1.0.0"
+description = "Class-based pytest parametrization"
+license = "MIT"
+authors = [
+    "Artem Novikov <artnew@list.ru>",
+]
+readme = "README.md"
+repository = "https://github.com/reartnew/pytest-data-suites"
+classifiers = [
+    "Topic :: Software Development :: Testing",
+    "Framework :: Pytest",
+    "Typing :: Typed",
+]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+pytest = "*"
+
+[tool.poetry.dev-dependencies]
+pytest-pylint = "*"
+pylint-quotes = "*"
+pytest-ordering = "*"
+tox = "*"
+
+[tool.pytest.ini_options]
+testpaths = [
+    "src",
+    "tests",
+]
+addopts = """
+--pylint
+"""
+
+[build-system]
+requires = [
+    "setuptools >= 40.6.2",
+    "wheel >= 0.30.0",
+]
+build-backend = "setuptools.build_meta"
+
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+envlist = py37
+
+[testenv]
+deps = pytest >= 3.0.0, <4
+commands = pytest
+"""
