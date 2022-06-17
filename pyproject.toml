@@ -22,6 +22,7 @@ pytest = "*"
 pytest-pylint = "*"
 pylint-quotes = "*"
 pytest-ordering = "*"
+pytest-pycodestyle = "*"
 tox = "*"
 
 [tool.pytest.ini_options]
@@ -31,6 +32,7 @@ testpaths = [
 ]
 addopts = """
 --pylint
+--pycodestyle
 """
 
 [build-system]
@@ -39,13 +41,3 @@ requires = [
     "wheel >= 0.30.0",
 ]
 build-backend = "setuptools.build_meta"
-
-[tool.tox]
-legacy_tox_ini = """
-[tox]
-envlist = py37
-
-[testenv]
-deps = pytest >= 3.0.0, <4
-commands = pytest
-"""
