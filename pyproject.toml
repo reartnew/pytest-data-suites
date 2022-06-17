@@ -24,6 +24,7 @@ pylint-quotes = "*"
 pytest-ordering = "*"
 pytest-mypy = "*"
 pytest-black = "*"
+pytest-bandit = "*"
 tox = "*"
 
 [tool.pytest.ini_options]
@@ -35,7 +36,9 @@ addopts = """
 --pylint
 --mypy
 --black
+--bandit
 """
+bandit_targets = ["src"]
 
 [tool.black]
 line-length = 120
