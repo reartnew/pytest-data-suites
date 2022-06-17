@@ -12,12 +12,14 @@ __all__ = [
 
 class StringTransformationCase(TypedDict):
     """String-to-string tests namespace"""
+
     initial: str
     expected: str
 
 
 class StringTransformationDataSuite(DataSuite):
     """Kebab-case transformation test cases"""
+
     idempotent_1 = StringTransformationCase(initial="abc", expected="abc")
     idempotent_2 = StringTransformationCase(initial="a-b-c", expected="a-b-c")
     underline_only = StringTransformationCase(initial="a_b_c", expected="a-b-c")

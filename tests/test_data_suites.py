@@ -25,8 +25,6 @@ def test_loose_parametrize(initial: str) -> None:
 def test_parametrized_tests_presence(request: pytest.FixtureRequest) -> None:
     """Validate correct tests parametrization"""
     dummy_test_names: List[str] = [
-        test.name
-        for test in request.session.items
-        if getattr(test, "originalname", None) == "test_dummy"
+        test.name for test in request.session.items if getattr(test, "originalname", None) == "test_dummy"
     ]
     assert len(dummy_test_names) == 7

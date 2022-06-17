@@ -22,8 +22,8 @@ pytest = "*"
 pytest-pylint = "*"
 pylint-quotes = "*"
 pytest-ordering = "*"
-pytest-pycodestyle = "*"
 pytest-mypy = "*"
+pytest-black = "*"
 tox = "*"
 
 [tool.pytest.ini_options]
@@ -33,9 +33,12 @@ testpaths = [
 ]
 addopts = """
 --pylint
---pycodestyle
 --mypy
+--black
 """
+
+[tool.black]
+line-length = 120
 
 [build-system]
 requires = [

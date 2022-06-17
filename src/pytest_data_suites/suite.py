@@ -49,7 +49,7 @@ __all__ = [
 
 
 def _loose_parametrize(argnames: Sequence[str], argvalues: Sequence[Sequence[Any]], ids: Sequence[str]):
-    """pytest.mark.parametrize loose wrapper to omit unused arguments """
+    """pytest.mark.parametrize loose wrapper to omit unused arguments"""
 
     def wrapper(func):
         expected_params: Set[str] = set(inspect.signature(func).parameters)
@@ -70,6 +70,7 @@ class CaseNaming(enum.Enum):
     KEBAB_CASE: transform names into kebab-case
     NUMERIC: use test case ordinal number as its name
     """
+
     KEBAB_CASE = 0
     NUMERIC = 1
 
@@ -110,6 +111,8 @@ class DataSuite:
         :param CaseNaming naming: derived tests naming strategy"""
         if not isinstance(naming, CaseNaming):
             raise ValueError(f"`naming` argument must be of CaseNaming type (caught: {naming!r}")
-        return functools.partial(cls._parametrize, naming=naming) \
-            if func is None \
+        return (
+            functools.partial(cls._parametrize, naming=naming)
+            if func is None
             else cls._parametrize(func=func, naming=naming)
+        )
