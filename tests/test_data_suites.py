@@ -15,6 +15,12 @@ def test_dummy(initial: str, expected: str) -> None:
     assert isinstance(expected, str)
 
 
+@StringTransformationDataSuite.parametrize
+def test_loose_parametrize(initial: str) -> None:
+    """Partial parameters check"""
+    assert isinstance(initial, str)
+
+
 @pytest.mark.last
 def test_parametrized_tests_presence(request: pytest.FixtureRequest) -> None:
     """Validate correct tests parametrization"""
