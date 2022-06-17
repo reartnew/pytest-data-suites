@@ -15,8 +15,8 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.7"
-pytest = "*"
+python = "^3.8"
+pytest = "^6.0 || ^7.0"
 
 [tool.poetry.dev-dependencies]
 pytest-pylint = "*"
@@ -25,7 +25,7 @@ pytest-ordering = "*"
 pytest-mypy = "*"
 pytest-black = "*"
 pytest-bandit = "*"
-tox-poetry = "*"
+tox-poetry-dev-dependencies = "*"
 
 [tool.pytest.ini_options]
 testpaths = [
@@ -46,14 +46,3 @@ line-length = 120
 [build-system]
 requires = ["poetry_core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
-
-[tool.tox]
-legacy_tox_ini = """
-[tox]
-envlist = py39
-isolated_build = True
-
-[testenv]
-commands =
-  pytest
-"""
