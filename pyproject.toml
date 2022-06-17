@@ -23,6 +23,7 @@ pytest-pylint = "*"
 pylint-quotes = "*"
 pytest-ordering = "*"
 pytest-pycodestyle = "*"
+pytest-mypy = "*"
 tox = "*"
 
 [tool.pytest.ini_options]
@@ -33,6 +34,7 @@ testpaths = [
 addopts = """
 --pylint
 --pycodestyle
+--mypy
 """
 
 [build-system]

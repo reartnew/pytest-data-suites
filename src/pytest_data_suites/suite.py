@@ -91,7 +91,7 @@ class DataSuite:
             if known_case_keys not in (None, current_keys):
                 raise ValueError(f"Extraordinary case: {member_name!r} (non-uniform parameters)")
             known_case_keys = current_keys
-            param_names: List[str] = param_names or sorted(known_case_keys)
+            param_names = param_names or sorted(known_case_keys)
             param_values.append([member[param_name] for param_name in param_names])
             ids.append(string_to_kebab_case(member_name) if naming == CaseNaming.KEBAB_CASE else str(member_index))
         return _loose_parametrize(param_names, param_values, ids=ids)(func)
@@ -104,12 +104,7 @@ class DataSuite:
                 yield member_name, member
 
     @classmethod
-    def parametrize(
-            cls,
-            func: Optional[Callable] = None,
-            *,
-            naming: CaseNaming = CaseNaming.KEBAB_CASE,
-    ) -> Callable:
+    def parametrize(cls, func: Optional[Callable] = None, *, naming: CaseNaming = CaseNaming.KEBAB_CASE):
         """Parameter-injecting decorator.
         :param Callable func: Wrapped test function (commonly passed implicitly)
         :param CaseNaming naming: derived tests naming strategy"""
