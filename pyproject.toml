@@ -44,5 +44,5 @@ bandit_targets = ["src"]
 line-length = 120
 
 [build-system]
-requires = ["poetry_core>=1.0.0"]
+requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
