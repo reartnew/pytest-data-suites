@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pytest-data-suites"
-version = "1.0.2"
+version = "1.0.3"
 description = "Class-based pytest parametrization"
 license = "MIT"
 authors = [
