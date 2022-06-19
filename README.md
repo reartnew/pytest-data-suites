@@ -2,6 +2,12 @@
 
 Class-based test cases for `pytest`.
 
+## Installation
+
+```shell
+pip install pytest-data-suites
+```
+
 ## Usage example
 
 ```python
