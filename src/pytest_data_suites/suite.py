@@ -23,10 +23,11 @@ from .utils import string_to_kebab_case
 __all__ = [
     "DataSuite",
     "CaseNaming",
+    "loose_parametrize",
 ]
 
 
-def _loose_parametrize(argnames: Sequence[str], argvalues: Sequence[Sequence[Any]], ids: Sequence[str]):
+def loose_parametrize(argnames: Sequence[str], argvalues: Sequence[Sequence[Any]], ids: Sequence[str]):
     """pytest.mark.parametrize loose wrapper to omit unused arguments"""
 
     def wrapper(func):
@@ -73,7 +74,7 @@ class DataSuite:
             param_names = param_names or sorted(known_case_keys)
             param_values.append([member[param_name] for param_name in param_names])
             ids.append(string_to_kebab_case(member_name) if naming == CaseNaming.KEBAB_CASE else str(member_index))
-        return _loose_parametrize(param_names, param_values, ids=ids)(func)
+        return loose_parametrize(param_names, param_values, ids=ids)(func)
 
     @classmethod
     def _get_case_members(cls) -> Generator[Tuple[str, dict], None, None]:
